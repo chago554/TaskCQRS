@@ -1,10 +1,6 @@
 package com.tasks.app.cqrs.task.command;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "task_aggregate")
@@ -24,7 +20,6 @@ public class TaskAggregate {
 		if (title == null || title.isBlank()) {
 			throw new IllegalArgumentException("El titulo no puede estar vacío.");
 		}
-
 		this.title = title;
 		this.description = description;
 		this.isCompleted = false;
@@ -32,6 +27,15 @@ public class TaskAggregate {
 
 	public static TaskAggregate create(String title, String description) {
 		return new TaskAggregate(title, description);
+	}
+	
+	public void update(String title, String description, boolean isCompleted) {
+		if (title == null || title.isBlank()) {
+			throw new IllegalArgumentException("El titulo no puede estar vacío.");
+		}
+		this.title = title;
+		this.description = description;
+		this.isCompleted = isCompleted;
 	}
 
 	// Getters y Setters

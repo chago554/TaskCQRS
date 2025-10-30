@@ -1,5 +1,6 @@
 package com.tasks.app.cqrs.task.query;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,11 +9,8 @@ import java.util.stream.Collectors;
 @Service
 public class TaskQueryHandler {
 
-	private final TaskProjectionRepository projectionRepository;
-
-	public TaskQueryHandler(TaskProjectionRepository projectionRepository) {
-		this.projectionRepository = projectionRepository;
-	}
+	@Autowired
+	TaskProjectionRepository projectionRepository;
 
 	public List<TaskDTO> handle(GetAllTasksQuery query) {
 		List<TaskProjection> projections = projectionRepository.findAll();

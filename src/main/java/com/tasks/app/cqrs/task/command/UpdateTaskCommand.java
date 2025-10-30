@@ -1,18 +1,17 @@
-package com.tasks.app.cqrs.task.query;
+package com.tasks.app.cqrs.task.command;
 
-public class TaskDTO {
+public class UpdateTaskCommand {
 
 	private final Long id;
 	private final String title;
 	private final String description;
-	private final boolean completed;
+	private final boolean isCompleted;
 
-
-	public TaskDTO(Long id, String title, String description, boolean completed) {
+	public UpdateTaskCommand(Long id, String title, String description, boolean isCompleted) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
-		this.completed = completed;
+		this.isCompleted = isCompleted;
 	}
 
 	public Long getId() {
@@ -28,6 +27,6 @@ public class TaskDTO {
 	}
 
 	public boolean isCompleted() {
-		return completed;
+		return isCompleted;
 	}
 }
